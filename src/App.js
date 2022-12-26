@@ -50,6 +50,30 @@ const App = () => {
 
   }
 
+  const handleMultiply = () => {
+    if(firstNumber === '0'){
+      setFirstNumber(String(currentNumber));
+        setCurrentNumber('0')
+        setOperation('*')
+    }else {
+      const sum = Number(firstNumber) * Number(currentNumber);
+      setCurrentNumber(String(sum))
+      setOperation('')
+    }
+  }
+
+  const handleDivisor = () => {
+    if(firstNumber === '0'){
+      setFirstNumber(String(currentNumber));
+        setCurrentNumber('0')
+        setOperation('/')
+    }else {
+      const sum = Number(firstNumber) / Number(currentNumber);
+      setCurrentNumber(String(sum))
+      setOperation('')
+    }
+  }
+
   const handleEquals = () => {
 
     if(firstNumber !== '0' && operation !== '' && currentNumber !== '0'){
@@ -72,8 +96,8 @@ const App = () => {
       <Content>
         <Input value={currentNumber}/>
         <Row>
-          <Button label="x"/>
-          <Button label="/"/>
+          <Button label="x" onClick={handleMultiply}/>
+          <Button label="/" onClick={handleDivisor}/>
           <Button label="c" onClick={handleOnClear}/>
           <Button label="."/>
         </Row>
